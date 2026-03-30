@@ -25,4 +25,19 @@ public class MovieService {
         String url = baseUrl + "/movie/popular?api_key=" + apiKey;
         return restTemplate.getForObject(url, MovieResponse.class);
     }
+
+    public MovieResponse getByTitle(String title){
+        String url = baseUrl + "/search/movie?api_key=" + apiKey + "&query=" + title;
+        return restTemplate.getForObject(url, MovieResponse.class);
+    }
+
+    public Movie getById(Long id){
+        String url = baseUrl + "/movie/{id}?api_key=" + apiKey;
+        return restTemplate.getForObject(url, Movie.class, id);
+    }
+
+    public MovieResponse getMostRated(){
+        String url = baseUrl + "/movie/top_rated?api_key=" + apiKey;
+        return restTemplate.getForObject(url, MovieResponse.class);
+    }
 }
